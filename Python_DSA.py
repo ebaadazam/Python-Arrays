@@ -42,6 +42,24 @@ class Arrays:
         else:
             print('Array size is Full!')
 
+    
+    def delete_at_end(self):
+        if self.arr_filled > 0:
+            del self.arr[self.arr_filled-1]
+            self.arr_filled -= 1
+        print('element deleted')
+        return ''
+
+    
+    def delete_at_begin(self):
+        if self.arr_filled > 0:
+            print(self.arr_filled)
+            for i in range(self.arr_filled-1-1, -1, -1):
+                self.arr[i+1] = self.arr[i]
+            del self.arr[i]
+            self.arr_filled -= 1
+        return ''
+
 
     def delete_at_position(self, index):
         for i in range(index, self.array_filled-1):
