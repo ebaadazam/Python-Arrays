@@ -53,9 +53,8 @@ class Arrays:
     
     def delete_at_begin(self):
         if self.arr_filled > 0:
-            print(self.arr_filled)
-            for i in range(self.arr_filled-1-1, -1, -1):
-                self.arr[i+1] = self.arr[i]
+            for i in range(1, self.arr_filled-1):
+                self.arr[i-1] = self.arr[i]
             del self.arr[i]
             self.arr_filled -= 1
         return ''
@@ -82,35 +81,38 @@ class Arrays:
             print('Oops!', elem, 'is not present in the Array')
         return ''
 
-    def traverse_array(self):
+    def display(self):
         for i in range(self.array_filled):
             print(self.data[i])
         return ''
 
+    def reverse(self):
+        for i in range(self.arr_filled-1, -1, -1):
+            print(self.arr[i], end=' ')
+        return ''
 
-obj = Arrays(5)
-obj.insert_at_end(10)
-obj.insert_at_end(20)
-obj.insert_at_end(30)
-obj.insert_at_end(40)
-obj.insert_at_end(50)
 
-print('After inserting elements:')
-print(obj.traverse_array())
+obj = Array(10)
+obj.insert_at_end(1)
+obj.insert_at_end(2)
+obj.insert_at_end(3)
+obj.insert_at_end(4)
+obj.insert_at_end(5)
+print(obj.display())
 
-obj.delete_at_position(2)
+obj.insert_at_begin(10)
+print(obj.display())
 
-print('The current size of the array: ', obj.get_array_size())
-print('The number of elements in the array: ', obj.get_array_filled(), '\n')
+obj.insert_at_position(1, 20)
+print(obj.display())
 
-obj.insert_at_position(2, 100)
-print('After inserting an element at a specific position:')
-print(obj.traverse_array())
+obj.delete_at_begin()
+print(obj.display())
 
-print('The number of elements in the array: ', obj.get_array_filled(), '\n')
+obj.delete_at_end()
+print(obj.display())
 
-obj.delete_at_position(0)
-obj.insert_at_begin(900)
-print(obj.traverse_array())
+obj.delete_at_position(3)
+print(obj.display())
 
-print(obj.search_element(100))
+print(obj.reverse())
